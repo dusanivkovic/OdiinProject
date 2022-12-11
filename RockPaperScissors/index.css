@@ -1,0 +1,69 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;1,400;1,600&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,700&display=swap'); 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+:root {
+    --main-color: crimson;
+    --second-color: 8, 25, 155;
+    --text-color: gray;
+    --text-color-second: blanchedalmond;
+    --highlight: 41 53 86;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+}
+/******************
+G L O B A L
+******************/
+h1 {
+    font-family: 'Roboto', sans-serif;
+    font-size: 2rem;
+    color: var(--text-color-second);
+    margin: 3% auto;
+    text-align: center;
+    text-shadow: 4px 4px 6px rgba(66, 68, 90, 1);
+}
+h2 {
+    font-size: 1.5rem;
+    font-weight: 500;
+    text-align: center;
+}
+body {
+    background: var(--main-color);
+    color: var(--text-color);
+}
+i {
+    font-size: 6rem;
+    color: var(--text-color-second);
+    margin: 10px 10px 3px;
+}
+span {
+    font-size: 2rem;
+    display: block;
+}
+/******************
+C O N T A I N E R
+******************/
+.container {
+    width: 80%;
+    margin: 0 auto;
+}
+.container .portal {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.container .portal .wrapper {
+    flex: 0 0 42%;
+    box-shadow: 8px 8px 24px 0px rgba(66, 68, 90, 1);
+    border-radius: 20px;
+    background-color: rgb(var(--second-color));
+}
+.container .portal .wrapper .tool {
+    text-align: center;
+    padding: 10px 10px;
+    flex-direction: row;
+}
+
+
