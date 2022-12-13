@@ -12,13 +12,16 @@
 <body>
     <section class="container">
         <h1>Rock Paper Scissors</h1>
+        <div id="start-game">
+            <p id="start">Start Game</p>
+        </div>
         <div class="portal">
             <div id="human" class="wrapper" >
                 <h2>Human</h2>
-                <div class="tool">
+                <div class="tool" id="player_choice">
                     <i class="fas fa-hand-rock"><span>Rock</span></i>
                     <i class="fas fa-hand-paper"><span>Paper</span></i>
-                    <i class="fas fa-hand-scissors"><span>Scissirs</span></i>
+                    <i class="fas fa-hand-scissors"><span>Scissiors</span></i>
                 </div>
             </div>
             <div id="computer" class="wrapper">
@@ -30,7 +33,11 @@
                 </div>
             </div>
         </div>
+        <div id="result">
+            <p id="player-result">You:</p>
+            <p id="computer-result">Computer:</p>
+        </div>
     </section>
-    <script src="./index.js"></script>
+    <script type="module" src="./index.js" ></script>
 </body>
 </html>

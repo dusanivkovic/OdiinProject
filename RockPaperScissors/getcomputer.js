@@ -5,4 +5,5 @@ function getComputerChoice() {
     computer =  choice[i];
     return computer;
 }
-module.exports = {getComputerChoice, computer};
+export default getComputerChoice;
+// module.exports = {getComputerChoice, computer};

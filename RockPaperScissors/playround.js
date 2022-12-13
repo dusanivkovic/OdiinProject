@@ -1,4 +1,3 @@
-
 let winComputer = 0;
 let winPlayer = 0;
 
@@ -39,8 +38,9 @@ function playRound(player, computer) {
     }
     return {result, winPlayer, winComputer};
 }   
-module.exports = {
-    playRound,
-    winComputer,
-    winPlayer
-};
+export default playRound ;
+// module.exports = {
+//     playRound,
+//     winComputer,
+//     winPlayer
+// };
