@@ -5,7 +5,6 @@ function  getPlayerChoice() {
     // player = 'rock';
     tools.addEventListener('click', event => {
         player = event.target.innerText.toLowerCase();
-        console.log(player);
     })
     return player;
 }
