@@ -4,35 +4,44 @@
 import  getPlayerChoice  from "./getplayer.js";
 import getComputerChoice from "./getcomputer.js";
 import playRound from "./playround.js";
+import winPlayer from "./playround.js";
+import winComputer from "./playround.js";
 let playerSelection = '';
 let computerSelection = ''; 
 let resultPlayer = document.getElementById('player-result');
 let resultComputer = document.getElementById('computer-result');
 let player = document.getElementById('player_choice');
-function game() {
+function game(p) {
+        p.addEventListener('click', event => {
+            playerSelection = event.target.innerText.toLowerCase();
+            resultPlayer.innerText = `You: ${playerSelection}`;
+            computerSelection = getComputerChoice();
+            resultComputer.innerText = `Computer: ${computerSelection}`;
+        });;
 
-        // document.getElementById('player_choice').addEventListener('click', event => {
-        //     playerSelection = event.target.innerText.toLowerCase();
-        // });
-        playerSelection = getPlayerChoice();
-        computerSelection = getComputerChoice();
-        // console.log(playRound(playerSelection, computerSelection));
-        console.log(playerSelection, computerSelection)
+        console.log(playRound(playerSelection, computerSelection));
+        // console.log(playerSelection, computerSelection)
         return playerSelection, computerSelection;
 
-    // if (play.playRound().winComputer > play.playRound().winPlayer) {
+    // if (winComputer > winPlayer) {
     //     return 'Win Computer';
-    // }else if (play.playRound().winComputer < play.playRound().winPlayer) {
+    // }else if (winComputer < winPlayer) {
     //     return 'Win Player'
     // }else {
     //     return 'Equal'
     // }
 }
 player.addEventListener('click', event => {
-    game();
-    resultPlayer.innerText = `You: ${playerSelection}`;
-    resultComputer.innerText = `Computer: ${computerSelection}`
+    game(player);
+    // console.log(playerSelection, computerSelection)
+    // console.log(playRound(playerSelection, computerSelection));
 });
+
+let list = document.getElementsByClassName('player-tool');
+[...list].forEach( (item) => {
+    item.addEventListener('click', console.log('HI'))
+})
+
 // player.addEventListener('click', event => {resultPlayer.innerText = game()})
 // let startGame = document.getElementById('start-game').addEventListener('click', event => {game()});
 
