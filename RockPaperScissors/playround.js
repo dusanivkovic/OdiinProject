@@ -13,31 +13,33 @@ function playRound(player, computer) {
             }else {
                 result = 'equal';
             }
-    }else {
-        if (player == 'scissors') {
-            if (computer == 'paper') {
-                result = 'scissors cuts paper';
-                winPlayer++;
-            }else if (computer == 'rock') {
-                    result = 'rock breaks scissors';
-                    winComputer++;
-                }else {
-                    result = 'equal'
-                }
-        }else {
-            if (computer == 'scissors') {
-                result = 'scissors cuts paper';
+    }
+    if (player == 'scissors') {
+        if (computer == 'paper') {
+            result = 'scissors cuts paper';
+            winPlayer++;
+        }else if (computer == 'rock') {
+                result = 'rock breaks scissors';
                 winComputer++;
-            }else if (computer == 'rock') {
-                result = 'paper covers rock';
-                winPlayer++;
             }else {
                 result = 'equal';
-            }
+        }
+    }
+    if (player == 'paper') {
+        if (computer == 'scissors') {
+            result = 'scissors cuts paper';
+            winComputer++;
+        }else if (computer == 'rock') {
+            result = 'paper covers rock';
+            winPlayer++;
+        }else {
+            result = 'equal';
         }
     }
     return {result, winPlayer, winComputer};
-}   
+}
+
+  
 export default playRound ;
 // module.exports = {
 //     playRound,
