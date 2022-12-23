@@ -65,5 +65,10 @@ C O N T A I N E R
     padding: 10px 10px;
     flex-direction: row;
 }
+.container #result {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
 
 
