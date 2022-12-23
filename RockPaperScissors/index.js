@@ -19,8 +19,7 @@ function game(e) {
     let listComputer = document.querySelectorAll('.computer-choice');
     // console.log(listComputer[0])
     listComputer.forEach( (item) => {
-        item.style.color = 'red';
-        console.log(item.style)
+        console.log(item.innerHTML)
     })
 
     if (winComputer > winPlayer) {
