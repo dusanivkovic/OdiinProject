@@ -18,14 +18,14 @@ G L O B A L
 ******************/
 h1 {
     font-family: 'Roboto', sans-serif;
-    font-size: 2rem;
+    font-size: 2em;
     color: var(--text-color-second);
     margin: 3% auto;
     text-align: center;
     text-shadow: 4px 4px 6px rgba(66, 68, 90, 1);
 }
 h2 {
-    font-size: 1.5rem;
+    font-size: 1.5em;
     font-weight: 500;
     text-align: center;
 }
@@ -34,12 +34,12 @@ body {
     color: var(--text-color);
 }
 i {
-    font-size: 6rem;
+    font-size: 6em;
     color: var(--text-color-second);
     margin: 10px 10px 3px;
 }
 span {
-    font-size: 2rem;
+    font-size: .3em;
     display: block;
 }
 /******************
@@ -69,6 +69,9 @@ C O N T A I N E R
     display: flex;
     justify-content: space-around;
     align-items: center;
+}
+.player-choice {
+    color: var(--main-color);
 }
 
 

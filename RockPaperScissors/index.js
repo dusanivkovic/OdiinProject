@@ -2,6 +2,7 @@ import getComputerChoice from "./getcomputer.js";
 import playRound from "./playround.js";
 import winPlayer from "./playround.js";
 import winComputer from "./playround.js";
+// import getPlayerChoice from "./getplayer.js";
 let playerSelection = '';
 let computerSelection = ''; 
 let resultPlayer = document.getElementById('player-result');
@@ -15,13 +16,9 @@ function game(e) {
     resultPlayer.innerHTML = `You: ${playerSelection}</br> ${x.winPlayer}`;
     resultComputer.innerHTML = `Computer: ${computerSelection}</br> ${x.winComputer}`;
     document.getElementById('result-game').innerText = x.result;
-    console.log(playRound(x.winComputer));
-    let listComputer = document.querySelectorAll('.computer-choice');
-    // console.log(listComputer[0])
-    listComputer.forEach( (item) => {
-        console.log(item.innerHTML)
-    })
-
+    let current = document.querySelector('.player-choice');
+    current.classList.remove('player-choice');
+    e.target.classList.add('player-choice');
     if (winComputer > winPlayer) {
         return 'Win Computer';
     }else if (winComputer < winPlayer) {
@@ -31,16 +28,11 @@ function game(e) {
     }
 }
 
-// startGame.addEventListener('click', e => { 
-//     ;
-// });
-
-
 let listPlayer = document.getElementsByClassName('player-tool');
 [...listPlayer].forEach( (item) => {
     item.addEventListener('click', (event) => {
         game(event);
-    })
+    });
 })
 
 // player.addEventListener('click', event => {resultPlayer.innerText = game()})

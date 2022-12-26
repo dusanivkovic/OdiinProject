@@ -1,9 +1,17 @@
 const choice = ['rock', 'paper', 'scissors'];
-let computer;
+let computerSelection;
 function getComputerChoice() {
     let i = Math.floor(Math.random() * 3);
-    computer =  choice[i];
-    return computer;
+    computerSelection =  choice[i];
+    let listComputer = document.querySelectorAll('.computer-choice');
+    listComputer.forEach( (item) => {
+        if (computerSelection == item.innerText.toLowerCase()) {
+            item.style.color = 'var(--main-color)'
+        } else {
+            item.style.color = 'var(--text-color-second)'
+        }
+    })
+    return computerSelection;
 }
 export default getComputerChoice;
-// module.exports = {getComputerChoice, computer};
+
