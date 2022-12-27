@@ -42,12 +42,32 @@ span {
     font-size: .3em;
     display: block;
 }
+button {
+    box-shadow: inset 0 0 0 0 #54b3d6;
+    color: var(--text-color-second);
+    margin: 0 -1.55em 1em;
+    padding: .5em 1em;
+    transition: color .3s ease-in-out, box-shadow .3s ease-in-out; 
+    background-color: var(--main-color);   
+    border: 5px var(--text-color) solid;
+    border-radius: 15px;
+    cursor: pointer;
+}
+button:hover {
+    box-shadow: inset 100px 0 0 0 #54b3d6;
+    color: var(--text-color);
+}
 /******************
 C O N T A I N E R
 ******************/
 .container {
     width: 80%;
     margin: 0 auto;
+}
+@media screen and (max-width: 726px) {
+    .container {
+        width: 96%;
+    }
 }
 .container .portal {
     display: flex;
@@ -59,19 +79,30 @@ C O N T A I N E R
     box-shadow: 8px 8px 24px 0px rgba(66, 68, 90, 1);
     border-radius: 20px;
     background-color: rgb(var(--second-color));
+    margin: 10px 0;
+}
+@media screen and (max-width: 609px) {
+    .container .portal {
+        flex-direction: column;
+    }
 }
 .container .portal .wrapper .tool {
     text-align: center;
     padding: 10px 10px;
     flex-direction: row;
+    flex-wrap: wrap;
+    cursor: pointer;
 }
 .container #result {
     display: flex;
     justify-content: space-around;
     align-items: center;
 }
-.player-choice {
+.container .portal .wrapper .player-choice {
     color: var(--main-color);
+}
+.container .result-wrraper {
+    color: var(--text-color-second);
 }
 
 

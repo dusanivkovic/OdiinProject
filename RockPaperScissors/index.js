@@ -15,7 +15,7 @@ function game(e) {
     let x = playRound(playerSelection, computerSelection);
     resultPlayer.innerHTML = `You: ${playerSelection}</br> ${x.winPlayer}`;
     resultComputer.innerHTML = `Computer: ${computerSelection}</br> ${x.winComputer}`;
-    document.getElementById('result-game').innerText = x.result;
+    document.getElementById('result-game').innerText = x.result.toUpperCase();
     let current = document.querySelector('.player-choice');
     current.classList.remove('player-choice');
     e.target.classList.add('player-choice');
