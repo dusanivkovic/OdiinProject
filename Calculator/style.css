@@ -1,0 +1,33 @@
+:root {
+    font-size: 16px;
+}
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+body {
+
+    position: relative;
+}
+.container {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    width: 400px;
+    margin:auto;
+}
+.grid-item {
+    min-height: 2rem;
+    min-width: 2rem;
+    border: 1px gray solid;
+    border-radius: 8px;
+    background-color: chartreuse;
+}
+.grid-item-display {
+    grid-column-start: 1;
+    grid-column-end: 5;
+}
+.grid-item-equal {
+    grid-column-start: 3;
+    grid-column-end: 5;
+}
