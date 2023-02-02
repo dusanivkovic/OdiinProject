@@ -35,7 +35,8 @@ body {
 .grid-item-display {
     grid-column-start: 1;
     grid-column-end: 5;
-    display: block;
+    display: grid;
+    grid-template-columns: auto auto;
 }
 .grid-item-equal {
     grid-column-start: 3;
