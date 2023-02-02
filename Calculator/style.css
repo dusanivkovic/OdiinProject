@@ -15,6 +15,10 @@ body {
     grid-template-columns: auto auto auto auto;
     width: 400px;
     margin:auto;
+    background-color: bisque;
+    padding: 3px;
+    width: 16rem;
+    height: 18rem;
 }
 .grid-item {
     min-height: 2rem;
@@ -22,12 +26,21 @@ body {
     border: 1px gray solid;
     border-radius: 8px;
     background-color: chartreuse;
+    margin: 2px;
+    display: grid;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
 }
 .grid-item-display {
     grid-column-start: 1;
     grid-column-end: 5;
+    display: block;
 }
 .grid-item-equal {
     grid-column-start: 3;
     grid-column-end: 5;
+}
+.negative {
+    display: none;
 }
