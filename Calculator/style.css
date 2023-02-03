@@ -42,6 +42,6 @@ body {
     grid-column-start: 3;
     grid-column-end: 5;
 }
-.negative {
+/* .negative {
     display: none;
-}
+} */
