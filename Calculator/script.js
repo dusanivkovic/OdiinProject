@@ -43,6 +43,7 @@ aC.addEventListener('click', () => {
     result.innerText = '';
     result.classList.remove('on'); 
     decimal.classList.remove('on');
+    aritmeticSign.forEach(item => {item.classList.remove('on');})
     firstOperand = '';
     //secondOperand = '';
     operator = undefined;
@@ -57,21 +58,25 @@ sign.addEventListener('click', () => {
         result.textContent = result.textContent.slice(1, result.textContent.length);
     }
     firstOperand = result.textContent;
-    // console.log(parseFloat(firstOperand) + 5)
 })
 const decimal = document.querySelector('.point');
 decimal.addEventListener('click', () => {
-    if (result.textContent == '') {
+    if (result.textContent == '')  {
         showDecimal(0);
-    }else if (!decimal.matches('.on')) {
+        decimal.classList.add('on');
+    }
+    else if (!decimal.matches('.on')) {
         showDecimal(result.textContent);
     }
+    
 })
 function showDecimal(para) {
-    decimal.classList.add('on');
-    result.textContent = `${para}.`;
+    result.textContent += `${para}.`;
+    decimal.classList.remove('on');
+    //return result.textContent;
 }
-const operand = document.querySelectorAll('.number, .operator');
+const operand = document.querySelectorAll('.number');
+const aritmeticSign = document.querySelectorAll('.operator');
 let firstOperand = display.querySelector('.showResult').textContent, secondOperand = '', operator;
 console.log(firstOperand);
 const percent = document.querySelector('#percent');
@@ -80,13 +85,28 @@ percent.addEventListener('click', () => {
 })
 operand.forEach(item => {
     item.addEventListener('click', () => {
-        if (item.matches('.operator')) {
-            decimal.classList.remove('on');
-        }
-        result.innerText += item.innerText;
-        console.log(firstOperand, operator, secondOperand, result.innerText)
+        decimal.classList.add('on');
     })
 })
+aritmeticSign.forEach(item => {
+    item.addEventListener('click', () => {
+        if (item.matches('.on')) {
+            result.textContent += item.textContent;
+            item.classList.remove('on');
+        }
+        decimal.classList.remove('on');
+        // result.textContent += item.textContent;
+    })
+})
+
+operand.forEach(item => {
+    item.addEventListener('click', () => {
+        result.textContent += item.textContent;
+        aritmeticSign.forEach(item => {item.classList.add('on')})
+    })
+})
+
+
 
 const equal = document.querySelector('#equal');
 let expr;
