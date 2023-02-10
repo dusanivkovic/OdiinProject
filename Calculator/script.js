@@ -42,11 +42,11 @@ const aC = document.querySelector('#AC');
 aC.addEventListener('click', () => {
     result.innerText = '';
     result.classList.remove('on'); 
-    decimal.classList.remove('on');
+    decimal.classList.add('on');// Default value
     aritmeticSign.forEach(item => {item.classList.remove('on');})
     firstOperand = '';
-    //secondOperand = '';
-    operator = undefined;
+    secondOperand = '';
+    operator = '';
     expr = '';
 })
 const sign = document.getElementById('+/-');
@@ -57,56 +57,55 @@ sign.addEventListener('click', () => {
     }else {
         result.textContent = result.textContent.slice(1, result.textContent.length);
     }
-    firstOperand = result.textContent;
 })
 const decimal = document.querySelector('.point');
-decimal.addEventListener('click', () => {
-    if (result.textContent == '')  {
-        showDecimal(0);
-        decimal.classList.add('on');
-    }
-    else if (!decimal.matches('.on')) {
-        showDecimal(result.textContent);
-    }
-    
-})
-function showDecimal(para) {
-    result.textContent += `${para}.`;
-    decimal.classList.remove('on');
-    //return result.textContent;
-}
-const operand = document.querySelectorAll('.number');
+decimal.classList.add('on');// Default value 
+const operand = document.querySelectorAll('.number, .point');
 const aritmeticSign = document.querySelectorAll('.operator');
-let firstOperand = display.querySelector('.showResult').textContent, secondOperand = '', operator;
+let firstOperand = '', secondOperand = '', operator;
 console.log(firstOperand);
 const percent = document.querySelector('#percent');
 percent.addEventListener('click', () => {
     result.innerText = parseFloat(result.innerText)/100;
 })
-operand.forEach(item => {
-    item.addEventListener('click', () => {
-        decimal.classList.add('on');
-    })
-})
 aritmeticSign.forEach(item => {
     item.addEventListener('click', () => {
+        if (firstOperand == '') {
+            firstOperand += result.textContent;
+        }else {
+            //secondOperand += '-';
+            operation(firstOperand, operator, secondOperand);
+        }
         if (item.matches('.on')) {
             result.textContent += item.textContent;
-            item.classList.remove('on');
         }
-        decimal.classList.remove('on');
-        // result.textContent += item.textContent;
+        removeAritmeticSign();
+        decimal.classList.add('on');
+        operator = item.textContent;
     })
 })
 
 operand.forEach(item => {
     item.addEventListener('click', () => {
-        result.textContent += item.textContent;
+        if (item.matches('.on') && item.matches('.point')) {
+            if (firstOperand == '') {
+                result.textContent += `.`;
+            }else {
+                result.textContent += '.';
+                secondOperand += '.';
+            }
+            item.classList.remove('on');
+        }else if (!item.matches('.point')) {
+            if (firstOperand == '') {
+                result.textContent += item.textContent;
+            }else {
+                result.textContent += item.textContent;
+                secondOperand += item.textContent;
+            }
+        }
         aritmeticSign.forEach(item => {item.classList.add('on')})
     })
 })
-
-
 
 const equal = document.querySelector('#equal');
 let expr;
@@ -115,8 +114,8 @@ equal.addEventListener('click', () => {
     if (secondOperand != '') {
         operation (firstOperand, operator, secondOperand);
         result.innerText = expr;
-        // secondOperand = '';
-        // operator = undefined;
+        //secondOperand = '';
+        operator = '';
     }
     console.log(firstOperand);
 })
@@ -137,7 +136,12 @@ function operation (first, oper, second) {
             break;
     }
     firstOperand = expr;
-    //secondOperand = '';
-    return expr, firstOperand;
+    secondOperand = '';
+    return expr, firstOperand, second;
+}
+function removeAritmeticSign() {
+        for (let i = 0; i < aritmeticSign.length; i++) {
+        aritmeticSign[i].classList.remove('on');
+    }
 }
 
