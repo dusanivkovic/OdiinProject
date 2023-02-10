@@ -35,35 +35,30 @@ gridItem.forEach(item => {
             item.innerText = calcSymbol[i];
     }
     i++;
-})// Add id ans printout calculator
+})// Add ID on div element and printout calculator
 const display = document.querySelector('#display');
 const result = display.querySelector('.showResult');
 const aC = document.querySelector('#AC');
 aC.addEventListener('click', () => {
     result.innerText = '';
-    result.classList.remove('on'); 
+    result.classList.remove('negative'); 
     decimal.classList.add('on');// Default value
-    aritmeticSign.forEach(item => {item.classList.remove('on');})
+    aritmeticSign.forEach(item => {item.classList.remove('on');})// Remove class 'ON' in aritmetic operators
     firstOperand = '';
     secondOperand = '';
     operator = '';
     expr = '';
 })
-const sign = document.getElementById('+/-');
-sign.addEventListener('click', () => {
-    result.classList.toggle('on');
-    if (result.matches('.on')) {
-        result.textContent = `-${result.textContent}`;
-    }else {
-        result.textContent = result.textContent.slice(1, result.textContent.length);
-    }
-})
+const beforeSign = document.getElementById('+/-');
+beforeSign.addEventListener('click', () => {
+    result.classList.toggle('negative');
+    addBeforeSign();
+})// Toggle sign in expression
 const decimal = document.querySelector('.point');
 decimal.classList.add('on');// Default value 
 const operand = document.querySelectorAll('.number, .point');
 const aritmeticSign = document.querySelectorAll('.operator');
 let firstOperand = '', secondOperand = '', operator;
-console.log(firstOperand);
 const percent = document.querySelector('#percent');
 percent.addEventListener('click', () => {
     result.innerText = parseFloat(result.innerText)/100;
@@ -71,16 +66,16 @@ percent.addEventListener('click', () => {
 aritmeticSign.forEach(item => {
     item.addEventListener('click', () => {
         if (firstOperand == '') {
-            firstOperand += result.textContent;
+            // addBeforeSign();
+            firstOperand += result.textContent;// Add content to the first operand when clicked one of aritmetic sign
         }else {
-            //secondOperand += '-';
-            operation(firstOperand, operator, secondOperand);
+            operation(firstOperand, operator, secondOperand);// Execut expression
         }
         if (item.matches('.on')) {
             result.textContent += item.textContent;
         }
-        removeAritmeticSign();
-        decimal.classList.add('on');
+        removeAritmeticSign();// Remove class 'ON' in all aritmetic operators
+        decimal.classList.add('on');// 
         operator = item.textContent;
     })
 })
@@ -93,17 +88,18 @@ operand.forEach(item => {
             }else {
                 result.textContent += '.';
                 secondOperand += '.';
-            }
+            }// Add decimal point to the operand
             item.classList.remove('on');
         }else if (!item.matches('.point')) {
             if (firstOperand == '') {
                 result.textContent += item.textContent;
             }else {
+                // addBeforeSign();
                 result.textContent += item.textContent;
                 secondOperand += item.textContent;
-            }
+            }// Add content to the operands
         }
-        aritmeticSign.forEach(item => {item.classList.add('on')})
+        aritmeticSign.forEach(item => {item.classList.add('on')})// Add class 'ON' in aritmetic operators
     })
 })
 
@@ -114,10 +110,9 @@ equal.addEventListener('click', () => {
     if (secondOperand != '') {
         operation (firstOperand, operator, secondOperand);
         result.innerText = expr;
-        //secondOperand = '';
         operator = '';
+        firstOperand = '';
     }
-    console.log(firstOperand);
 })
 
 function operation (first, oper, second) {
@@ -143,5 +138,15 @@ function removeAritmeticSign() {
         for (let i = 0; i < aritmeticSign.length; i++) {
         aritmeticSign[i].classList.remove('on');
     }
+}
+function addBeforeSign() {
+    if (result.matches('.negative')) {
+        result.textContent = `-${result.textContent}`;
+    }else {
+        if (result.textContent[0] == '-') {
+            result.textContent = result.textContent.slice(1, result.textContent.length);
+        }
+    }
+    return result.textContent;
 }
 
